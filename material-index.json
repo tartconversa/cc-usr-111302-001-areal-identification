@@ -1,0 +1,17 @@
+[
+  {
+    "path": "fixtures/cells.csv",
+    "sha256": "0375d32024df2ef0a9aff7fb21d40017d4580fb0c57c035c368f2cdde5e3265a",
+    "size_bytes": 55
+  },
+  {
+    "path": "fixtures/crosswalk.json",
+    "sha256": "66090d733fc3c329d81ee22ea271c634783fa4db7573c7a0b82de6214d22f3cf",
+    "size_bytes": 346
+  },
+  {
+    "path": "fixtures/regions.json",
+    "sha256": "a76909cc50d946255d3f6ffbaf05bb201b38c4d2378bfe07b07caeef4df2e123",
+    "size_bytes": 141
+  }
+]

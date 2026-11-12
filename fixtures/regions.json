@@ -1,0 +1,12 @@
+{
+  "version": "synthetic-v1",
+  "old_regions": {
+    "A": 6,
+    "B": 4
+  },
+  "new_regions": [
+    "X",
+    "Y"
+  ],
+  "unit": "persons"
+}

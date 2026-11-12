@@ -1,0 +1,27 @@
+{
+  "public_subtotals": [
+    {
+      "key": "all",
+      "regions": [
+        "X",
+        "Y"
+      ],
+      "count": 10
+    }
+  ],
+  "queries": [
+    {
+      "X": 1
+    },
+    {
+      "Y": 1
+    },
+    {
+      "X": 1,
+      "Y": -1
+    }
+  ],
+  "solve_integer": true,
+  "node_budget": 10000,
+  "area_baseline": "separate_without_projection"
+}
