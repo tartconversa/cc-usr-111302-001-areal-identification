@@ -1,0 +1,454 @@
+{
+  "meta": {
+    "region_version": "synthetic-v1",
+    "unit": "persons",
+    "new_regions": [
+      "X",
+      "Y"
+    ],
+    "old_regions": {
+      "A": 6,
+      "B": 4
+    },
+    "cell_count": 3,
+    "solve_integer": true,
+    "node_budget": 10000,
+    "no_individual_records": true,
+    "range_semantics": "已识别的可行整数/松弛范围，不是抽样置信区间；面积权重不收缩该范围。",
+    "area_baseline_mode": "separate_without_projection",
+    "inputs": {
+      "regions": "fixtures/regions.json",
+      "crosswalk": "fixtures/crosswalk.json",
+      "cells": "fixtures/cells.csv",
+      "sha256": {
+        "regions": "a76909cc50d946255d3f6ffbaf05bb201b38c4d2378bfe07b07caeef4df2e123",
+        "crosswalk": "66090d733fc3c329d81ee22ea271c634783fa4db7573c7a0b82de6214d22f3cf",
+        "cells": "0375d32024df2ef0a9aff7fb21d40017d4580fb0c57c035c368f2cdde5e3265a"
+      }
+    },
+    "constraint_inventory": [
+      {
+        "kind": "old_total",
+        "text": "x[A->X] + x[A->Y] = 6",
+        "source": "fixtures/regions.json#old_regions.A",
+        "detail": {
+          "old": "A"
+        },
+        "rhs": 6
+      },
+      {
+        "kind": "old_total",
+        "text": "x[B->Y] = 4",
+        "source": "fixtures/regions.json#old_regions.B",
+        "detail": {
+          "old": "B"
+        },
+        "rhs": 4
+      },
+      {
+        "kind": "capacity",
+        "text": "x[A->Y] <= 2",
+        "source": "fixtures/cells.csv#row 3",
+        "detail": {
+          "old": "A",
+          "new": "Y"
+        },
+        "rhs": 2
+      },
+      {
+        "kind": "public_subtotal",
+        "text": "x[A->X] + x[A->Y] + x[B->Y] = 10",
+        "source": "fixtures/crosswalk.json#public_subtotals[0]",
+        "detail": {
+          "key": "all",
+          "regions": [
+            "X",
+            "Y"
+          ]
+        },
+        "rhs": 10
+      }
+    ],
+    "area_baseline_used_for_constraints": false,
+    "results_are_sampling_confidence_intervals": false
+  },
+  "feasibility": {
+    "feasible": true,
+    "certified": true,
+    "witness": [
+      {
+        "old": "A",
+        "new": "X",
+        "persons": 6,
+        "capacity": null,
+        "area_weight": "1/2"
+      },
+      {
+        "old": "A",
+        "new": "Y",
+        "persons": 0,
+        "capacity": 2,
+        "area_weight": "1/2"
+      },
+      {
+        "old": "B",
+        "new": "Y",
+        "persons": 4,
+        "capacity": null,
+        "area_weight": 1
+      }
+    ],
+    "conflict": null,
+    "note": "已找到满足全部声明约束的整数交叉格分配，作为可行性见证。"
+  },
+  "queries": [
+    {
+      "index": 0,
+      "expression": {
+        "X": 1
+      },
+      "label": "X",
+      "unit": "persons（表达式可有符号）",
+      "min": {
+        "value": 4,
+        "witness": [
+          {
+            "old": "A",
+            "new": "X",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "A",
+            "new": "Y",
+            "persons": 2,
+            "capacity": 2,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "B",
+            "new": "Y",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": 1
+          }
+        ],
+        "certified_integer": true,
+        "relaxation_bound": 4,
+        "unverified": false,
+        "note": "整数端点已认证，附完整交叉格见证。"
+      },
+      "max": {
+        "value": 6,
+        "witness": [
+          {
+            "old": "A",
+            "new": "X",
+            "persons": 6,
+            "capacity": null,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "A",
+            "new": "Y",
+            "persons": 0,
+            "capacity": 2,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "B",
+            "new": "Y",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": 1
+          }
+        ],
+        "certified_integer": true,
+        "relaxation_bound": 6,
+        "unverified": false,
+        "note": "整数端点已认证，附完整交叉格见证。"
+      },
+      "range": {
+        "min": 4,
+        "max": 6,
+        "integer_certified": true,
+        "kind": "identified_feasible_range",
+        "note": "两端分别由单张完整交叉格表联合实现；不是边际范围的独立组合。"
+      },
+      "marginal_combination_warning": null
+    },
+    {
+      "index": 1,
+      "expression": {
+        "Y": 1
+      },
+      "label": "Y",
+      "unit": "persons（表达式可有符号）",
+      "min": {
+        "value": 4,
+        "witness": [
+          {
+            "old": "A",
+            "new": "X",
+            "persons": 6,
+            "capacity": null,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "A",
+            "new": "Y",
+            "persons": 0,
+            "capacity": 2,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "B",
+            "new": "Y",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": 1
+          }
+        ],
+        "certified_integer": true,
+        "relaxation_bound": 4,
+        "unverified": false,
+        "note": "整数端点已认证，附完整交叉格见证。"
+      },
+      "max": {
+        "value": 6,
+        "witness": [
+          {
+            "old": "A",
+            "new": "X",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "A",
+            "new": "Y",
+            "persons": 2,
+            "capacity": 2,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "B",
+            "new": "Y",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": 1
+          }
+        ],
+        "certified_integer": true,
+        "relaxation_bound": 6,
+        "unverified": false,
+        "note": "整数端点已认证，附完整交叉格见证。"
+      },
+      "range": {
+        "min": 4,
+        "max": 6,
+        "integer_certified": true,
+        "kind": "identified_feasible_range",
+        "note": "两端分别由单张完整交叉格表联合实现；不是边际范围的独立组合。"
+      },
+      "marginal_combination_warning": null
+    },
+    {
+      "index": 2,
+      "expression": {
+        "X": 1,
+        "Y": -1
+      },
+      "label": "X - Y",
+      "unit": "persons（表达式可有符号）",
+      "min": {
+        "value": -2,
+        "witness": [
+          {
+            "old": "A",
+            "new": "X",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "A",
+            "new": "Y",
+            "persons": 2,
+            "capacity": 2,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "B",
+            "new": "Y",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": 1
+          }
+        ],
+        "certified_integer": true,
+        "relaxation_bound": -2,
+        "unverified": false,
+        "note": "整数端点已认证，附完整交叉格见证。"
+      },
+      "max": {
+        "value": 2,
+        "witness": [
+          {
+            "old": "A",
+            "new": "X",
+            "persons": 6,
+            "capacity": null,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "A",
+            "new": "Y",
+            "persons": 0,
+            "capacity": 2,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "B",
+            "new": "Y",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": 1
+          }
+        ],
+        "certified_integer": true,
+        "relaxation_bound": 2,
+        "unverified": false,
+        "note": "整数端点已认证，附完整交叉格见证。"
+      },
+      "range": {
+        "min": -2,
+        "max": 2,
+        "integer_certified": true,
+        "kind": "identified_feasible_range",
+        "note": "两端分别由单张完整交叉格表联合实现；不是边际范围的独立组合。"
+      },
+      "marginal_combination_warning": null
+    }
+  ],
+  "area_baseline": {
+    "role": "独立的面积点摊分基准；仅作假设展示，绝不收紧或解释可行范围。",
+    "mode": "separate_without_projection",
+    "scenarios": [
+      {
+        "name": "declared_area_weights",
+        "available": true,
+        "allocation": [
+          {
+            "old": "A",
+            "new": "X",
+            "persons": 3,
+            "capacity": null,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "A",
+            "new": "Y",
+            "persons": 3,
+            "capacity": 2,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "B",
+            "new": "Y",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": 1
+          }
+        ],
+        "compliant": false,
+        "violations": [
+          {
+            "kind": "capacity",
+            "text": "x[A->Y]=3 超过容量上界 2",
+            "source": "fixtures/cells.csv#row 3"
+          }
+        ],
+        "not_projected": true
+      },
+      {
+        "name": "uniform_over_allowed_cells",
+        "available": true,
+        "allocation": [
+          {
+            "old": "A",
+            "new": "X",
+            "persons": 3,
+            "capacity": null,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "A",
+            "new": "Y",
+            "persons": 3,
+            "capacity": 2,
+            "area_weight": "1/2"
+          },
+          {
+            "old": "B",
+            "new": "Y",
+            "persons": 4,
+            "capacity": null,
+            "area_weight": 1
+          }
+        ],
+        "compliant": false,
+        "violations": [
+          {
+            "kind": "capacity",
+            "text": "x[A->Y]=3 超过容量上界 2",
+            "source": "fixtures/cells.csv#row 3"
+          }
+        ],
+        "not_projected": true
+      }
+    ],
+    "area_weights_used_for_feasible_ranges": false,
+    "feasible_range_independent_of_area_weights": true,
+    "not_a_confidence_interval": true,
+    "compliant": false,
+    "violations": [
+      {
+        "kind": "capacity",
+        "text": "x[A->Y]=3 超过容量上界 2",
+        "source": "fixtures/cells.csv#row 3"
+      }
+    ],
+    "not_projected": true,
+    "status": "noncompliant",
+    "note": "面积基准违反容量或公开小计，明确不合规；未将其投影到约束后再称为面积摊分。可行范围只由旧区总量、容量和公开小计决定。",
+    "query_point_values": [
+      {
+        "expression": {
+          "X": 1
+        },
+        "label": "X",
+        "declared_area_weights": 3,
+        "uniform_over_allowed_cells": 3
+      },
+      {
+        "expression": {
+          "Y": 1
+        },
+        "label": "Y",
+        "declared_area_weights": 7,
+        "uniform_over_allowed_cells": 7
+      },
+      {
+        "expression": {
+          "X": 1,
+          "Y": -1
+        },
+        "label": "X - Y",
+        "declared_area_weights": -4,
+        "uniform_over_allowed_cells": -4
+      }
+    ]
+  }
+}
